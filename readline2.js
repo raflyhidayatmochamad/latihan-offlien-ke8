@@ -19,13 +19,17 @@ if (!fs.existsSync(filepath)) {
 
 rl.question('Masukkan nama anda : ', (nama) => {
     rl.question('Masukkan No hp anda : ', (nohp) => {
-        const contact = { nama: nama, nohp: nohp };
-        const file = fs.readFileSync(filepath, 'utf-8');
-        const contacts = JSON.parse(file);
-        contacts.push(contact);
-        // Menulis ulang file contacts.json dengan data yang baru
-        fs.writeFileSync(filepath, JSON.stringify(contacts, null, 2));
-        console.log('Terima kasih, data sudah disimpan.');
-        rl.close();
+        rl.question('Masukkan email anda : ', (email) => {
+            rl.question('Masukkan alamat anda : ', (alamat) => {
+                const contact = { nama: nama, nohp: nohp, email: email, alamat: alamat };
+                const file = fs.readFileSync(filepath, 'utf-8');
+                const contacts = JSON.parse(file);
+                contacts.push(contact);
+                // Menulis ulang file contacts.json dengan data yang baru
+                fs.writeFileSync(filepath, JSON.stringify(contacts, null, 2));
+                console.log('Terima kasih, data sudah disimpan.');
+                rl.close();
+            });
+        });
     });
 });
