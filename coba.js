@@ -1,4 +1,8 @@
 function cetakNama(nama) {
     return `Halo , nama saya  ${nama}`;
 }
-module.exports = cetakNama; 
+const pi = 3.14;
+
+module.exports.cetakNama = cetakNama;
+module.exports.pi = pi;
+// module.exports = cetakNama; 
